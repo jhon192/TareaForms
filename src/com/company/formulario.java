@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class formulario {
+public class formulario implements ActionListener{
     JFrame ventana;
     JPanel panel;
     JLabel titulo1, titulo2;
@@ -14,6 +14,8 @@ public class formulario {
     JComboBox<String> despegable, despegableimi;
     JSeparator separador;
 
+    @Override
+    public void actionPerformed(ActionEvent e) {}
 
     void despegables(){
         espacio = new JTextField();
@@ -77,6 +79,18 @@ public class formulario {
         cboton3imi.setEnabled(false);
     }
 
+    void metodosimi(){
+        cboton1.addActionListener(e -> cboton1imi.setSelected(true));
+        cboton2.addActionListener(e -> cboton2imi.setSelected(true));
+        cboton3.addActionListener(e -> cboton3imi.setSelected(true));
+        rboton1.addActionListener(e -> rboton1imi.setSelected(true));
+        rboton2.addActionListener(e -> rboton2imi.setSelected(true));
+        rboton3.addActionListener(e -> rboton3imi.setSelected(true));
+        /*espinelimi.setValue(espinel);
+        espinelimi.getValue();*/
+        despegable.addActionListener(e -> despegableimi.add(despegable));
+    }
+
 
     void titulos(){
         titulo1 = new JLabel("Original");
@@ -131,8 +145,10 @@ public class formulario {
         despegables();
         botones();
         desactivar();
+        metodosimi();
         titulos();
         paneles();
         metodoventana();
     }
+
 }
